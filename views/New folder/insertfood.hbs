@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5  bg-dark text-light">
+    <div><center><h1>Insert new item</h1></center></div>
+    <form action="/insertfood" method="post" enctype="multipart/form-data" > 
+     <p>enter food_id</p><input type="number"   class="form-control" name="id" /><br />
+    <p>enter food_Name</p><input type="text"   class="form-control"  name="name"/><br />
+    <p>enter food_prize</p><input type="number"    class="form-control"  name="prize"/><br />
+    <p>enter food_category</p><input type="text"    class="form-control"  name="category"/><br />
+    <p>enter food_rating</p><input type="number"   class="form-control" name="rating" /><br />
+    <p>enter food_content</p><input type="text"    class="form-control"  name="content"/><br />
+    <p>enter a file </p><input type="file" name="mfile" /> 
+   <center>  <input type="submit" id="btn"  class="btn btn-primary" name="submit" value="submit">
+   </div>
+</form> 
+</body> 
+</html>

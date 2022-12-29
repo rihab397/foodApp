@@ -1,0 +1,33 @@
+{
+  "name": "file",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "create-node-app": "^1.4.4",
+    "csv-parse": "^5.3.1",
+    "dotenv": "^8.2.0",
+    "exceljs": "^4.3.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "hbs": "^4.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.12.5",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.6.2",
+    "nodemon": "^2.0.7",
+    "read-excel-file": "^5.5.3",
+    "wbm": "^1.1.15",
+    "xlsx": "^0.18.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        #container{
+            height: 500px;
+            width: 800px;
+            transform: translate(30%,10%);
+            background-color: green;
+            border-radius: 10px;
+            border: 1px black; 
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+       <form><h1 style="text-align: center;color:white">Send you gmail from here</h1><br>
+           <input type="text" name="emailaddress" placeholder="enter mail address" class="form-control" id="address" /><br>
+           <input type="text" name="title" placeholder="enter title" class="form-control" id="title"  /><br>
+           <input type="text" name="desc" placeholder="enter description" class="form-control" id="desc"  /><br>
+           <Button class="btn btn-primary" onclick="send()" id="sends">send mail</Button>
+       </form>
+    </div>   
+    <script>
+        document.getElementById('sends').addEventListener('click',(e)=>{
+         e.preventDefault();
+            var address=document.getElementById('address').value;
+        var title=document.getElementById('title').value;
+        var description=document.getElementById('desc').value;
+        fetch('/sendmail',{
+            headers:{
+            add:address,
+            titl:title,
+            desc:description
+        }
+        }).then(res=>res.json())
+        .then(data=>{alert(data.success)})
+        .catch(err=>console.log(err));
+        })  
+    </script> 
+</body> 
+</html>

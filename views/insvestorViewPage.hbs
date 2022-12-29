@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+<body>
+<div style="text-align:center;">
+     <div class="alert alert-success" style="font-size:17px;">
+        <button data-dismiss="alert" class="close" type="button">×</button>
+      </div>
+     <div class="alert alert-warning" style="font-size:17px;">
+        <button data-dismiss="alert" class="close" type="button">×</button>
+      </div>
+</div>      
+<section id="content" class="min380">
+  <div class="main padder">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 m-t-large">
+        <section class="panel grdbg">   
+         <header class="panel-heading text-center">: Details of Unpaid Investors </header>
+         <div class="col-md-12 m-t-large" id="parentField">
+         </div>       
+       <div class="clr"></div>
+          </section>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<input id="id" style="display: none;" value="{{id}}" /> 
+<input id="folio" style="display: none;" value="{{folio}}" /> 
+</body>
+<script>
+          let id= document.getElementById("id").value;
+          let folio=document.getElementById("folio").value;
+          console.log(id,folio);
+          let parentField=document.getElementById("parentField");
+            axios.post("/investors/fetchinvestor",{
+             id:id?id:'6350f733d268ae2e3c99cade',    
+             Folio:folio?folio:"IN30387610008814 "
+        })
+        .then(data=>{
+            let temp=data.data.data;
+            if(!temp.length){
+            parentField.innerHTML="<p>Something is wrong<p>";
+            }
+            else{
+            let str="";
+            Object.entries(temp[0]).forEach(([key, value]) =>{ 
+                 let view=`<div class="block m-b borpad">
+                <label class="control-label col-md-4">${key} :</label> ${value}
+                </div>`;
+              str+=view
+            });
+            parentField.innerHTML=str;
+            }
+        })
+        .catch(err=>{
+            console.log(err)
+        })  
+
+</script>
+</html>
