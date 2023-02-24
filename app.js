@@ -28,7 +28,7 @@ app.use("/investors",unpaidInvestorRouter)
 app.use("/user",userRouter)
 app.use("/Career",Career)
 app.listen(4000, () => {
-    console.log('server is running on ' + PORT);
+    console.log('server is running on port ' + PORT);
 })
 
 
