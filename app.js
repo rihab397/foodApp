@@ -2,7 +2,6 @@ let express = require("express");
 let app = express();
 // const reader = require("xlsx")
 // let file = reader.readFile("./images/det.xlsx");
-import { fetchAllApplicant } from "./controllers/Career";
 var path = require('path');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -28,7 +27,24 @@ let userRouter = require("./routers/user");
 app.use("/investors", unpaidInvestorRouter)
 app.use("/user", userRouter)
 app.use("/Career", Career)
-app.get("/",fetchAllApplicant()
+let fetchApplicant = async (req, res) => {
+  let { id } = req.body
+  try {
+      await Applicant.find({ _id: id }).then((data) => {
+          res.send({
+              message: "Something is wrong",
+              data
+          })
+      }).catch(er=>{throw er;})
+  }
+  catch (er) {
+      res.status(500).send({
+          message: "Something is wrong",
+          err: er
+      })
+  }
+}
+app.get("/",fetchApplicant()
 )
 app.listen(PORT, () => {
   console.log('server is running on port ' + PORT);
