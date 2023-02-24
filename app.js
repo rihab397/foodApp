@@ -27,6 +27,9 @@ let userRouter=require("./routers/user");
 app.use("/investors",unpaidInvestorRouter)
 app.use("/user",userRouter)
 app.use("/Career",Career)
+app.get("/",(req,res)=>{
+res.send('server is running on port ' + PORT);
+})
 app.listen(PORT, () => {
     console.log('server is running on port ' + PORT);
 })
