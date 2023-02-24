@@ -4,6 +4,7 @@ let app = express();
 // let file = reader.readFile("./images/det.xlsx");
 var path = require('path');
 var bodyParser = require('body-parser');
+import { Applicant } from "./models/Career";
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require('dotenv').config();
@@ -28,19 +29,18 @@ app.use("/investors", unpaidInvestorRouter)
 app.use("/user", userRouter)
 app.use("/Career", Career)
 let fetchApplicant = async (req, res) => {
-  let { id } = req.body
   try {
-      await Applicant.find({ _id: id }).then((data) => {
+      await Applicant.find().then((data) => {
           res.send({
               message: "Something is wrong",
-              data
+              data:JSON.stringify(data)
           })
       }).catch(er=>{throw er;})
   }
   catch (er) {
       res.status(500).send({
           message: "Something is wrong",
-          err: er
+          err: JSON.stringify( er)
       })
   }
 }
