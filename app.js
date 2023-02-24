@@ -28,24 +28,7 @@ let userRouter = require("./routers/user");
 app.use("/investors", unpaidInvestorRouter)
 app.use("/user", userRouter)
 app.use("/Career", Career)
-let fetchApplicant = async (req, res) => {
-  try {
-      await Applicant.find().then((data) => {
-          res.send({
-              message: "Something is wrong",
-              data:JSON.stringify(data)
-          })
-      }).catch(er=>{throw er;})
-  }
-  catch (er) {
-      res.status(500).send({
-          message: "Something is wrong",
-          err: JSON.stringify( er)
-      })
-  }
-}
-app.get("/",fetchApplicant()
-)
+
 app.listen(PORT, () => {
   console.log('server is running on port ' + PORT);
 })

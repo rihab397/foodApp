@@ -40,7 +40,7 @@ router.post("/SaveUserProfilePdf", uploads.fields([
 router.post("/ApplicationCount",ValidateToken,returnExcel)
 router.post("/ApplicationGet",ValidateToken,fetchApplicant)
 router.get("/downloadFile",ValidateToken,downloadFile)
-router.get("/fetchAllApplicant",ValidateToken,fetchAllApplicant)
+router.get("/fetchAllApplicant",fetchAllApplicant)
 router.get("/dashBoardData",ValidateToken,dashBoardData)
 
 

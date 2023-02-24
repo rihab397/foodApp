@@ -146,7 +146,7 @@ let fetchApplicant = async (req, res) => {
 
 
 let fetchAllApplicant = async (req, res) => {
-    let { id } = req.body
+    // let { id } = req.body
     try {
         await    Applicant.find({},{_id:1,First_Name:1,Post_Applied:1,Category:1,Company_Name:1,Resume:1}).then((data)=>{
         // await Applicant.find({}).then((data) => {
