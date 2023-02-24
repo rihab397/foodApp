@@ -132,7 +132,7 @@ let fetchApplicant = async (req, res) => {
                 message: "Something is wrong",
                 data
             })
-        })
+        }).catch(er=>{throw er;})
     }
     catch (er) {
         res.status(500).send({
