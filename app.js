@@ -4,7 +4,6 @@ let app = express();
 // let file = reader.readFile("./images/det.xlsx");
 var path = require('path');
 var bodyParser = require('body-parser');
-import { Applicant } from "./models/Career";
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require('dotenv').config();
